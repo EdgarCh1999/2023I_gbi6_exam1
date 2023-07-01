@@ -1,27 +1,26 @@
 #_________________ Función 1
+import numpy as np
 def build_population(N, p):
     population = []
     for i in range(N):
         allele1 = "A"
-        if scipy.random.rand() > p:
-            allele1 = "a"
-        allele2 = "A"
-        if scipy.random.rand() > p:
-            allele2 = "a"
-        population.append((allele1, allele2))
-    return population
-
+         if np.random.rand() > p:
+              allele1 = "a"
+              allele2 = "A"
+             if np.random.rand() > p:
+                  allele2 = "a"
+ population.append((allele1, allele2))
+return population
 #_________________ Función 2
 def compute_frequencies(population):
     AA = population.count(("A", "A"))
-    Aa = population.count(("A", "a"))
-    aA = population.count(("a", "A"))
-    aa = population.count(("a", "a"))
-    return({"AA": AA, "aa": aa, "Aa": Aa, "aA": aA})
-
+     Aa = population.count(("A", "a"))
+aA = population.count(("a", "A"))
+ aa = population.count(("a", "a"))
+return({"AA": AA, "aa": aa, "Aa": Aa, "aA": aA})
 #_________________ Función 3
 def reproduce_population(population):
-    new_generation = []
+     new_generation = []
     N = len(population)
     for i in range(N):
         dad = np.random.randint(N)
@@ -29,11 +28,10 @@ def reproduce_population(population):
         chr_mom = np.random.randint(2)
         offspring = (population[mom][chr_mom], population[dad][1 - chr_mom])
         new_generation.append(offspring)
-    return new_generation
-
+    return new_generation # Devuelve la nueva generación
 #_________________ Función 4
 def simulate_drift(N, p):
-    my_pop = build_population(N, p)
+     my_pop = build_population(N, p)
     fixation = False
     num_generations = 0
     while fixation == False:
@@ -43,7 +41,7 @@ def simulate_drift(N, p):
             print("The genotype counts are")
             print(genotype_counts)
             fixation == True
-            break
+            break 
         my_pop = reproduce_population(my_pop)
         num_generations += 1
     return num_generations, genotype_counts

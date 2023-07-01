@@ -38,15 +38,18 @@ def compute_frequencies(population):
 #_________________ Función 3
 import numpy as np
 def reproduce_population(population):
+    # Lista vacía para almacenar la nueva generación
     new_generation = []
+     # Número de individuos en la población
     N = len(population)
+    # Para cada individuo en la población
     for i in range(N):
-        dad = np.random.randint(N)
-        mom = np.random.randint(N)
-        chr_mom = np.random.randint(2)
-        offspring = (population[mom][chr_mom], population[dad][1 - chr_mom])
-        new_generation.append(offspring)
-    return new_generation
+        dad = np.random.randint(N) # Se selecciona aleatoriamente un padre
+        mom = np.random.randint(N) # Se selecciona aleatoriamente una madre
+        chr_mom = np.random.randint(2)# Se selecciona aleatoriamente uno de los dos cromosomas de la madre
+        offspring = (population[mom][chr_mom], population[dad][1 - chr_mom])# se crea un descendiente con un cromosoma de cada padre
+        new_generation.append(offspring) # Se agrega el descendiente a la nueva generación
+    return new_generation# Devuelve la nueva generación
 
 #_________________ Función 4
 def simulate_drift(N, p):

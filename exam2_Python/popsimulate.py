@@ -24,10 +24,15 @@ def build_population(N, p):
 
 #_________________ Función 2
 def compute_frequencies(population):
+     # Cuenta el número de individuos con genotipo "AA" en la población
     AA = population.count(("A", "A"))
+     # Cuenta el número de individuos con genotipo "Aa" en la población
     Aa = population.count(("A", "a"))
+     # Cuenta el número de individuos con genotipo "aA" en la población
     aA = population.count(("a", "A"))
+    # Cuenta el número de individuos con genotipo "aa" en la población
     aa = population.count(("a", "a"))
+     # Devuelve un diccionario con la frecuencia de cada genotipo
     return({"AA": AA, "aa": aa, "Aa": Aa, "aA": aA})
 
 #_________________ Función 3

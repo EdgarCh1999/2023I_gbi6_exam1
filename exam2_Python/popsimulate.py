@@ -53,17 +53,17 @@ def reproduce_population(population):
 
 #_________________ Función 4
 def simulate_drift(N, p):
-    my_pop = build_population(N, p)
-    fixation = False
-    num_generations = 0
-    while fixation == False:
-        genotype_counts = compute_frequencies(my_pop)
-        if (genotype_counts["AA"] == N or genotype_counts["aa"] == N):
-            print("An allele reached fixation at generation", num_generations)
-            print("The genotype counts are")
+    my_pop = build_population(N, p)# Construye una población inicial
+    fixation = False# Establece la variable de fijación en Falso
+    num_generations = 0# Establece el contador de generaciones en 0
+    while fixation == False:# Mientras no se alcance la fijación
+        genotype_counts = compute_frequencies(my_pop)# Calcula las frecuencias de genotipos
+        if (genotype_counts["AA"] == N or genotype_counts["aa"] == N):# Si un alelo alcanza la fijación ( es decir cuando toda la población tiene el mismo alelo)
+            print("An allele reached fixation at generation", num_generations)# Imprime el número de generaciones hasta la fijación
+            print("The genotype counts are") # Imprime los recuentos finales de genotipos
             print(genotype_counts)
-            fixation == True
-            break
-        my_pop = reproduce_population(my_pop)
-        num_generations += 1
-    return num_generations, genotype_counts
+            fixation == True# Establece la variable de fijación en Verdadero
+            break # Sale del bucle while
+        my_pop = reproduce_population(my_pop)# Reproduce la población para la siguiente generación
+        num_generations += 1  # Incrementa el contador de generaciones
+    return num_generations, genotype_counts # Devuelve el número de generaciones y los recuentos finales de genotipos
